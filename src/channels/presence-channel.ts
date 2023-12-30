@@ -56,16 +56,17 @@ export class PresenceChannel {
             this.io
                 .of("/")
                 .in(channel)
-                .clients((error, clients) => {
+                .allSockets()
+                .then((clients) => {
                     members = members || [];
                     members = members.filter((member) => {
-                        return clients.indexOf(member.socketId) >= 0;
+                        return clients.has(member.socketId);
                     });
 
                     this.db.set(channel + ":members", members);
 
                     resolve(members);
-                });
+                })
         });
     }
 
