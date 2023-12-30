@@ -22,7 +22,7 @@ export class EchoServer {
         databaseConfig: {
             redis: {},
             sqlite: {
-                databasePath: '/database/laravel-echo-server.sqlite'
+                databasePath: '/database/tripay-les.sqlite'
             }
         },
         devMode: false,

@@ -1,10 +1,10 @@
 {
-  "name": "laravel-echo-server",
+  "name": "tripay-les",
   "version": "1.6.3",
   "description": "Laravel Echo Node JS Server for Socket.io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tlaverdure/Laravel-Echo-Server.git"
+    "url": "https://github.com/trijayadigital/tripay-les.git"
   },
   "main": "dist/index.js",
   "keywords": [
@@ -41,6 +41,6 @@
     "sqlite3": "^3.1.13"
   },
   "bin": {
-    "laravel-echo-server": "bin/server.js"
+    "tripay-les": "bin/server.js"
   }
 }

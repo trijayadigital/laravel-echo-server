@@ -8,14 +8,14 @@
 
 ## Added
 
--   Add method to stop the server (#502)[https://github.com/tlaverdure/laravel-echo-server/pull/502]
--   Document how to use Redis Sentinel (#437)[https://github.com/tlaverdure/laravel-echo-server/pull/437]
--   Add Apache proxt example tp docs (#361)[https://github.com/tlaverdure/laravel-echo-server/pull/361]
--   Expose user member user info in API. (#356)[https://github.com/tlaverdure/laravel-echo-server/pull/356]
+-   Add method to stop the server (#502)[https://github.com/tlaverdure/tripay-les/pull/502]
+-   Document how to use Redis Sentinel (#437)[https://github.com/tlaverdure/tripay-les/pull/437]
+-   Add Apache proxt example tp docs (#361)[https://github.com/tlaverdure/tripay-les/pull/361]
+-   Expose user member user info in API. (#356)[https://github.com/tlaverdure/tripay-les/pull/356]
 
 ## Fixed
 
--   Fix crash when invalid referer is sent (#513)[https://github.com/tlaverdure/laravel-echo-server/pull/513]
+-   Fix crash when invalid referer is sent (#513)[https://github.com/tlaverdure/tripay-les/pull/513]
 
 # 1.6.1
 
@@ -59,10 +59,10 @@ Updated to socket.io v2
 
 ## Upgrade Guide
 
--   Re-install laravel-echo-server globally using the command.
+-   Re-install tripay-les globally using the command.
 
 ```
-npm install -g laravel-echo-server
+npm install -g tripay-les
 ```
 
--   In your `laravel-echo-server.json` file, remove the section named `referrers`. Then follow the [instructions](https://github.com/tlaverdure/laravel-echo-server#api-clients) to generate an app id and key. The `referrers` section has been replaced with `clients`.
+-   In your `tripay-les.json` file, remove the section named `referrers`. Then follow the [instructions](https://github.com/tlaverdure/tripay-les#api-clients) to generate an app id and key. The `referrers` section has been replaced with `clients`.

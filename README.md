@@ -1,4 +1,4 @@
-# Laravel Echo Server
+# tripay-les
 
 NodeJs server for Laravel Echo broadcasting with Socket.io.
 
@@ -18,7 +18,7 @@ official docs: <https://laravel.com/docs/master/broadcasting>
 Install npm package globally with the following command:
 
 ``` shell
-$   npm install -g laravel-echo-server
+$   npm install -g tripay-les
 ```
 
 ### Initialize with CLI Tool
@@ -26,20 +26,20 @@ $   npm install -g laravel-echo-server
 Run the init command in your project directory:
 
 ``` shell
-$   laravel-echo-server init
+$   tripay-les init
 ```
 
-The cli tool will help you setup a **laravel-echo-server.json** file in the root directory of your project. This file will be loaded by the server during start up. You may edit this file later on to manage the configuration of your server.
+The cli tool will help you setup a **tripay-les.json** file in the root directory of your project. This file will be loaded by the server during start up. You may edit this file later on to manage the configuration of your server.
 
 #### API Clients
 
-The Laravel Echo Server exposes a light http API to perform broadcasting functionality. For security purposes, access to these endpoints from http referrers must be authenticated with an APP id and key. This can be generated using the cli command:
+The tripay-les exposes a light http API to perform broadcasting functionality. For security purposes, access to these endpoints from http referrers must be authenticated with an APP id and key. This can be generated using the cli command:
 
 ``` shell
-$ laravel-echo-server client:add APP_ID
+$ tripay-les client:add APP_ID
 ```
 
-If you run `client:add` without an app id argument, one will be generated for you. After running this command, the client id and key will be displayed and stored in the **laravel-echo-server.json** file.
+If you run `client:add` without an app id argument, one will be generated for you. After running this command, the client id and key will be displayed and stored in the **tripay-les.json** file.
 
 In this example, requests will be allowed as long as the app id and key are both provided with http requests.
 
@@ -53,14 +53,14 @@ or
 http://app.dev:6001/apps/APP_ID/channels?auth_key=skti68i...
 ```
 
-You can remove clients with `laravel-echo-server client:remove APP_ID`
+You can remove clients with `tripay-les client:remove APP_ID`
 
 #### Run The Server
 
 in your project root directory, run
 
 ``` shell
-$ laravel-echo-server start
+$ tripay-les start
 ```
 
 #### Stop The Server
@@ -68,34 +68,34 @@ $ laravel-echo-server start
 in your project root directory, run
 
 ``` shell
-$ laravel-echo-server stop
+$ tripay-les stop
 ```
 
 ### Configurable Options
 
-Edit the default configuration of the server by adding options to your **laravel-echo-server.json** file.
+Edit the default configuration of the server by adding options to your **tripay-les.json** file.
 
 
-| Title              | Default              | Description                 |
-| :------------------| :------------------- | :---------------------------|
-| `apiOriginAllow`   | `{}`                 | Configuration to allow API be accessed over CORS. [Example](#cross-domain-access-to-api) |
-| `authEndpoint`     | `/broadcasting/auth` | The route that authenticates private channels  |
-| `authHost`         | `http://localhost`   | The host of the server that authenticates private and presence channels  |
-| `database`         | `redis`              | Database used to store data that should persist, like presence channel members. Options are currently `redis` and `sqlite` |
-| `databaseConfig`   |  `{}`                | Configurations for the different database drivers [Example](#database) |
-| `devMode`          | `false`              | Adds additional logging for development purposes |
-| `host`             | `null`               | The host of the socket.io server ex.`app.dev`. `null` will accept connections on any IP-address |
-| `port`             | `6001`               | The port that the socket.io server should run on |
-| `protocol`         | `http`               | Must be either `http` or `https` |
-| `sslCertPath`      | `''`                 | The path to your server's ssl certificate |
-| `sslKeyPath`       | `''`                 | The path to your server's ssl key |
-| `sslCertChainPath` | `''`                 | The path to your server's ssl certificate chain |
-| `sslPassphrase`    | `''`                 | The pass phrase to use for the certificate (if applicable) |
-| `socketio`         | `{}`                 | Options to pass to the socket.io instance ([available options](https://github.com/socketio/engine.io#methods-1)) |
-| `subscribers`      | `{"http": true, "redis": true}` | Allows to disable subscribers individually. Available subscribers: `http` and `redis` |
+| Title              | Default                         | Description                                                                                                                |
+| :----------------- | :------------------------------ | :------------------------------------------------------------------------------------------------------------------------- |
+| `apiOriginAllow`   | `{}`                            | Configuration to allow API be accessed over CORS. [Example](#cross-domain-access-to-api)                                   |
+| `authEndpoint`     | `/broadcasting/auth`            | The route that authenticates private channels                                                                              |
+| `authHost`         | `http://localhost`              | The host of the server that authenticates private and presence channels                                                    |
+| `database`         | `redis`                         | Database used to store data that should persist, like presence channel members. Options are currently `redis` and `sqlite` |
+| `databaseConfig`   | `{}`                            | Configurations for the different database drivers [Example](#database)                                                     |
+| `devMode`          | `false`                         | Adds additional logging for development purposes                                                                           |
+| `host`             | `null`                          | The host of the socket.io server ex.`app.dev`. `null` will accept connections on any IP-address                            |
+| `port`             | `6001`                          | The port that the socket.io server should run on                                                                           |
+| `protocol`         | `http`                          | Must be either `http` or `https`                                                                                           |
+| `sslCertPath`      | `''`                            | The path to your server's ssl certificate                                                                                  |
+| `sslKeyPath`       | `''`                            | The path to your server's ssl key                                                                                          |
+| `sslCertChainPath` | `''`                            | The path to your server's ssl certificate chain                                                                            |
+| `sslPassphrase`    | `''`                            | The pass phrase to use for the certificate (if applicable)                                                                 |
+| `socketio`         | `{}`                            | Options to pass to the socket.io instance ([available options](https://github.com/socketio/engine.io#methods-1))           |
+| `subscribers`      | `{"http": true, "redis": true}` | Allows to disable subscribers individually. Available subscribers: `http` and `redis`                                      |
 
 ### DotEnv
-If a .env file is found in the same directory as the laravel-echo-server.json
+If a .env file is found in the same directory as the tripay-les.json
 file, the following options can be overridden:
 
 - `authHost`: `LARAVEL_ECHO_SERVER_AUTH_HOST` *Note*: This option will fall back to the `LARAVEL_ECHO_SERVER_HOST` option as the default if that is set in the .env file.
@@ -128,7 +128,7 @@ If you are struggling to get SSL implemented with this package, you could look a
 ```
 #the following would go within the server{} block of your web server config
 location /socket.io {
-	    proxy_pass http://laravel-echo-server:6001; #could be localhost if Echo and NginX are on the same box
+	    proxy_pass http://tripay-les:6001; #could be localhost if Echo and NginX are on the same box
 	    proxy_http_version 1.1;
 	    proxy_set_header Upgrade $http_upgrade;
 	    proxy_set_header Connection "Upgrade";
@@ -147,18 +147,18 @@ ProxyPassReverse /socket.io http://localhost:6001/socket.io
 ```
 
 ### Setting the working directory
-The working directory in which `laravel-echo-server` will look for the configuration file `laravel-echo-server.json` can be passed to the `start` command through the `--dir` parameter like so: `laravel-echo-server start --dir=/var/www/html/example.com/configuration`
+The working directory in which `tripay-les` will look for the configuration file `tripay-les.json` can be passed to the `start` command through the `--dir` parameter like so: `tripay-les start --dir=/var/www/html/example.com/configuration`
 
 ## Subscribers
-The Laravel Echo Server subscribes to incoming events with two methods: Redis & Http.
+The tripay-les subscribes to incoming events with two methods: Redis & Http.
 
 ### Redis
 
- Your core application can use Redis to publish events to channels. The Laravel Echo Server will subscribe to those channels and broadcast those messages via socket.io.
+ Your core application can use Redis to publish events to channels. The tripay-les will subscribe to those channels and broadcast those messages via socket.io.
 
 ### Http
 
-Using Http, you can also publish events to the Laravel Echo Server in the same fashion you would with Redis by submitting a `channel` and `message` to the broadcast endpoint. You need to generate an API key as described in the [API Clients](#api-clients) section and provide the correct API key.
+Using Http, you can also publish events to the tripay-les in the same fashion you would with Redis by submitting a `channel` and `message` to the broadcast endpoint. You need to generate an API key as described in the [API Clients](#api-clients) section and provide the correct API key.
 
 **Request Endpoint**
 
@@ -236,7 +236,7 @@ GET /apps/:APP_ID/channels/:CHANNEL_NAME/users
 ```
 
 ## Cross Domain Access To API
-Cross domain access can be specified in the laravel-echo-server.json file by changing `allowCors` in `apiOriginAllow` to `true`. You can then set the CORS Access-Control-Allow-Origin, Access-Control-Allow-Methods as a comma separated string (GET and POST are enabled by default) and the Access-Control-Allow-Headers that the API can receive.
+Cross domain access can be specified in the tripay-les.json file by changing `allowCors` in `apiOriginAllow` to `true`. You can then set the CORS Access-Control-Allow-Origin, Access-Control-Allow-Methods as a comma separated string (GET and POST are enabled by default) and the Access-Control-Allow-Headers that the API can receive.
 
 Example below:
 
@@ -257,7 +257,7 @@ This allows you to send requests to the API via AJAX from an app that may be run
 
 To persist presence channel data, there is support for use of Redis or SQLite as a key/value store. The key being the channel name, and the value being the list of presence channel members.
 
-Each database driver may be configured in the **laravel-echo-server.json** file under the `databaseConfig` property. The options get passed through to the database provider, so developers are free to set these up as they wish.
+Each database driver may be configured in the **tripay-les.json** file under the `databaseConfig` property. The options get passed through to the database provider, so developers are free to set these up as they wish.
 
 ### Redis
 For example, if you wanted to pass a custom configuration to Redis:
@@ -280,7 +280,7 @@ For example, if you wanted to pass a custom configuration to Redis:
 *A full list of Redis options can be found [here](https://github.com/luin/ioredis/blob/master/API.md#new-redisport-host-options).*
 
 ### Redis sentinel
-For example, if you wanted to use redis-sentinel, you need to pass a custom configuration : 
+For example, if you wanted to use redis-sentinel, you need to pass a custom configuration :
 
 ``` json
  "databaseConfig": {
@@ -303,7 +303,7 @@ For example, if you wanted to use redis-sentinel, you need to pass a custom conf
        "sentinelPassword": "redis-password"
      },
    },
- ``` 
+ ```
 *For more information about redis sentinel configuration you can check [this](https://github.com/luin/ioredis#sentinel)*
 ### SQLite
 
@@ -313,7 +313,7 @@ With SQLite you may be interested in changing the path where the database is sto
 {
   "databaseConfig" : {
     "sqlite" : {
-      "databasePath": "/path/to/laravel-echo-server.sqlite"
+      "databasePath": "/path/to/tripay-les.sqlite"
     }
   }
 }
@@ -333,7 +333,7 @@ When users join a presence channel, their presence channel authentication data i
 
 While presence channels contain a list of users, there will be instances where a user joins a presence channel multiple times. For example, this would occur when opening multiple browser tabs. In this situation "joining" and "leaving" events are only emitted to the first and last instance of the user.
 
-Optionally, you can configure laravel-echo-server to publish an event on each update to a presence channel, by setting `databaseConfig.publishPresence` to `true`:
+Optionally, you can configure tripay-les to publish an event on each update to a presence channel, by setting `databaseConfig.publishPresence` to `true`:
 
 ```json
 {
@@ -372,4 +372,4 @@ _Note: When using the socket.io client library from your running server, remembe
 
 #### µWebSockets deprecation
 
-µWebSockets has been [officially deprecated](https://www.npmjs.com/package/uws). Currently there is no support for µWebSockets in Socket.IO, but it may have the new [ClusterWS](https://www.npmjs.com/package/@clusterws/cws) support incoming. Meanwhile Laravel Echo Server will use [`ws` engine](https://www.npmjs.com/package/ws) by default until there is another option.
+µWebSockets has been [officially deprecated](https://www.npmjs.com/package/uws). Currently there is no support for µWebSockets in Socket.IO, but it may have the new [ClusterWS](https://www.npmjs.com/package/@clusterws/cws) support incoming. Meanwhile tripay-les will use [`ws` engine](https://www.npmjs.com/package/ws) by default until there is another option.
